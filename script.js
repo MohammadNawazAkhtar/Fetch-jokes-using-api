@@ -6,3 +6,9 @@ async function getJokes() {
   }
 }
 getJokes()
+
+document.querySelector('.generate-joke').addEventListener('click', generateModules)
+
+function generateModules(){
+  let loading = document.querySelector('.loading')
+}
