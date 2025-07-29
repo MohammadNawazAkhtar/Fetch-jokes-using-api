@@ -8,6 +8,7 @@ html,
 body {
   height: 100vh;
   width: 100vw;
+  font-family: sans-serif;
 }
 
 main {
@@ -21,7 +22,7 @@ main {
 }
 
 main header {
-  font-size: 5rem;
+  font-size: 4rem;
   font-weight: 800;
   color: #161616;
 }
@@ -116,11 +117,11 @@ main header {
 }
 .loaderBG{
   height: 12%;
-  width: 90%;
+  width: 91%;
   background-color: #FFFFFF;
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  top: 54%;
+  left: 46%;
+  transform: translate(-46%, -54%);
   z-index: 4;
 }
