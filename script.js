@@ -3,14 +3,19 @@ async function getJokes() {
   let joke = await fetchJoke.json()
   return joke
 }
-
+let loader = document.querySelector('.loader')
+let loaderBG = document.querySelector('.loaderBG')
 let header = document.querySelector('header')
 
-document.querySelector('.generate-joke').addEventListener('click', generateModules)
+let generateJokeButton = document.querySelector('.generate-joke')
+generateJokeButton.addEventListener('click', generateModules)
 
 function generateModules() {
+  loader.classList.toggle('hide-element')
+  loaderBG.classList.toggle('hide-element')
+  generateJokeButton.innerText = 'RE-GENERATE'
   let oldLoading = document.querySelector('.loading')
-  if(oldLoading){
+  if (oldLoading) {
     oldLoading.remove()
   }
   let loading = document.createElement('div')
@@ -44,16 +49,20 @@ function generateModules() {
   revealTwistButton.innerText = 'REVEAL TWIST'
   loading.append(revealTwistButton)
   // Getting Jokes 
-  getJokes().then(joke=>{
+  getJokes().then(joke => {
     contentSpan.innerText = joke.setup
-    contentSpan2.innerText =joke.punchline
+    contentSpan2.innerText = joke.punchline
     contentSpan2.style.display = 'none'
-    revealTwistButton.addEventListener('click', function(){
-    if(contentSpan2.style.display === 'none'){
-    contentSpan2.style.display = 'inline'
-    }else{
-      contentSpan2.style.display = 'none'
-    }
+    revealTwistButton.addEventListener('click', function() {
+      if (contentSpan2.style.display === 'none') {
+        contentSpan2.style.display = 'inline'
+      } else {
+        contentSpan2.style.display = 'none'
+      }
+    })
   })
-  })
+  setTimeout(function() {
+    loader.classList.toggle('hide-element')
+    loaderBG.classList.toggle('hide-element')
+  }, 1000)
 }

@@ -72,17 +72,55 @@ main header {
   border-radius: 10px;
   border-bottom: 3px solid #1B4200;
   cursor: pointer;
-
+  
   &:active {
     border: none;
     transform: translateY(3px);
   }
 }
-.setup, .punchline {
+
+.setup,
+.punchline {
   display: flex;
   gap: 5px;
 }
 
-.hide-element{
+.hide-element {
   visibility: hidden;
+}
+
+.loader {
+  display: block;
+  position: absolute;
+  height: 90px;
+  width: 90px;
+  border: 7px solid white;
+  border-top: 7px solid #9A9B9F;
+  border-bottom: 7px solid #00CEFF;
+  border-radius: 50%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation: motion 0.7s linear infinite;
+  z-index: 5;
+}
+
+@keyframes motion {
+  from {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+.loaderBG{
+  height: 12%;
+  width: 90%;
+  background-color: #FFFFFF;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 4;
 }
