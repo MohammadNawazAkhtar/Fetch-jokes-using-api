@@ -115,7 +115,8 @@ main header {
     transform: translate(-50%, -50%) rotate(360deg);
   }
 }
-.loaderBG{
+
+.loaderBG {
   height: 12%;
   width: 91%;
   background-color: #FFFFFF;
@@ -124,4 +125,37 @@ main header {
   left: 46%;
   transform: translate(-46%, -54%);
   z-index: 4;
+}
+
+@media only screen and (max-width: 600px) {
+  main header {
+    font-size: 1.7rem;
+  }
+  
+  .generate-joke {
+    font-size: 1rem;
+    border-radius: 5px;
+  }
+  
+  .text,
+  .gen-text {
+    font-size: 0.7rem;
+  }
+  
+  .show-twist {
+    font-size: 0.7rem;
+    border-radius: 5px;
+  }
+  
+  .loaderBG {
+    height: 13%;
+  }
+  
+  .loader {
+    height: 50px;
+    width: 50px;
+    border: 5px solid white;
+    border-top: 5px solid #9A9B9F;
+    border-bottom: 5px solid #00CEFF;
+  }
 }
