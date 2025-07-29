@@ -78,3 +78,7 @@ main header {
     transform: translateY(3px);
   }
 }
+
+.hide-element{
+  visibility: hidden;
+}
