@@ -1,18 +1,21 @@
 async function getJokes() {
   let fetchJoke = await fetch('https://official-joke-api.appspot.com/jokes/random')
   let joke = await fetchJoke.json()
-  for (let key in joke) {
-    console.log(key, joke[key])
-  }
+  return joke
 }
-getJokes()
+
+let header = document.querySelector('header')
 
 document.querySelector('.generate-joke').addEventListener('click', generateModules)
-let loading = document.querySelector('.loading')
+
 function generateModules() {
-  
-  /*
-  loading.innerHTML = ''
+  let oldLoading = document.querySelector('.loading')
+  if(oldLoading){
+    oldLoading.remove()
+  }
+  let loading = document.createElement('div')
+  loading.classList.add('loading')
+  header.insertAdjacentElement('afterend', loading)
   // setup div element added
   let setupDiv = document.createElement('div')
   setupDiv.classList.add('setup')
@@ -22,8 +25,7 @@ function generateModules() {
   textSpan.innerText = 'Think:'
   setupDiv.append(textSpan)
   let contentSpan = document.createElement('span')
-  contentSpan.classList.add('joke-content')
-  contentSpan.classList.add('gen-text')
+  contentSpan.classList.add('joke-content', 'gen-text')
   setupDiv.append(contentSpan)
   // punchline div element added 
   let punchlineDiv = document.createElement('div')
@@ -34,14 +36,24 @@ function generateModules() {
   textSpan2.innerText = 'Twist:'
   punchlineDiv.append(textSpan2)
   let contentSpan2 = document.createElement('span')
-  contentSpan2.classList.add('twist-content')
-  contentSpan2.classList.add('gen-text')
+  contentSpan2.classList.add('twist-content', 'gen-text')
   punchlineDiv.append(contentSpan2)
   // Button element added
   let revealTwistButton = document.createElement('button')
   revealTwistButton.classList.add('show-twist')
   revealTwistButton.innerText = 'REVEAL TWIST'
   loading.append(revealTwistButton)
-  */
-  
+  // Getting Jokes 
+  getJokes().then(joke=>{
+    contentSpan.innerText = joke.setup
+    contentSpan2.innerText =joke.punchline
+    contentSpan2.style.display = 'none'
+    revealTwistButton.addEventListener('click', function(){
+    if(contentSpan2.style.display === 'none'){
+    contentSpan2.style.display = 'inline'
+    }else{
+      contentSpan2.style.display = 'none'
+    }
+  })
+  })
 }

@@ -78,6 +78,10 @@ main header {
     transform: translateY(3px);
   }
 }
+.setup, .punchline {
+  display: flex;
+  gap: 5px;
+}
 
 .hide-element{
   visibility: hidden;
